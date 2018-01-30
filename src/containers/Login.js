@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { injectIntl, intlShape } from 'react-intl';
+import { CheckBox, TextField } from '../components/Infrastructure';
 
 class Login extends Component {
   state = {
@@ -37,34 +38,27 @@ class Login extends Component {
         <h2>{intl.formatMessage({ id: 'login.header' })}</h2>
         <form onSubmit={this.handleSubmit}>
           <fieldset>
-            <label htmlFor="email">
-              {intl.formatMessage({ id: 'login.email' })}
-            </label>
-            <input
-              type="text"
+            <TextField
+              id="login-email"
               name="email"
-              id="email"
+              type="email"
+              label={intl.formatMessage({ id: 'login.email' })}
               value={email}
               onChange={this.handleChange}
             />
-            <label htmlFor="password">
-              {intl.formatMessage({ id: 'login.password' })}
-            </label>
-            <input
-              type="password"
+            <TextField
+              id="login-password"
               name="password"
-              id="password"
+              type="password"
+              label={intl.formatMessage({ id: 'login.password' })}
               value={password}
               onChange={this.handleChange}
             />
-            <label htmlFor="remember">
-              {intl.formatMessage({ id: 'login.rememberMe' })}
-            </label>
-            <input
-              type="checkbox"
+            <CheckBox
+              id="login-remember"
               name="rememberMe"
-              id="remember"
-              checked={rememberMe}
+              label={intl.formatMessage({ id: 'login.rememberMe' })}
+              value={rememberMe}
               onChange={this.handleChecked}
             />
             <input type="submit" />
