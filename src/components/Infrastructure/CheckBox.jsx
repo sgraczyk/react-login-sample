@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { dasherize } from '../../utils';
+import dasherize from '../../utils';
 
-const CheckBox = ({ id, name, label, type, value, onChange }) => (
+const CheckBox = ({
+  id,
+  name,
+  label,
+  value,
+  onChange,
+}) => (
   <div className={`${dasherize(name)}-checkbox`}>
     {label &&
       <label htmlFor={name}>
@@ -21,7 +27,7 @@ const CheckBox = ({ id, name, label, type, value, onChange }) => (
 
 CheckBox.defaultProps = {
   label: null,
-  onChange: null
+  onChange: null,
 };
 
 CheckBox.propTypes = {
@@ -29,7 +35,7 @@ CheckBox.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.bool.isRequired,
   label: PropTypes.string,
-  onChange: PropTypes.func
-}
+  onChange: PropTypes.func,
+};
 
 export default CheckBox;

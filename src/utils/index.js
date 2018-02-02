@@ -1,1 +1,3 @@
-export { default as dasherize } from './dasherize'
+import dasherize from './dasherize';
+
+export default dasherize;

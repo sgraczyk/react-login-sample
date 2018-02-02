@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { dasherize } from '../../utils';
+import dasherize from '../../utils/dasherize';
 
-const TextField = ({ id, name, label, type, value, onChange }) => (
+const TextField = ({
+  id,
+  name,
+  label,
+  type,
+  value,
+  onChange,
+}) => (
   <div className={`${dasherize(name)}-text-field`}>
     {label &&
       <label htmlFor={name}>
@@ -22,7 +29,7 @@ const TextField = ({ id, name, label, type, value, onChange }) => (
 TextField.defaultProps = {
   type: 'text',
   label: null,
-  onChange: null
+  onChange: null,
 };
 
 TextField.propTypes = {
@@ -30,8 +37,8 @@ TextField.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string,
-  type: PropTypes.oneOf(["text", "email", "password"]),
-  onChange: PropTypes.func
-}
+  type: PropTypes.oneOf(['text', 'email', 'password']),
+  onChange: PropTypes.func,
+};
 
 export default TextField;

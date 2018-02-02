@@ -7,7 +7,6 @@ class Login extends Component {
     email: '',
     password: '',
     rememberMe: false,
-    isSubmitted: false
   };
 
   handleSubmit = (e) => {
@@ -19,14 +18,14 @@ class Login extends Component {
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
   handleChecked = (e) => {
     const { name, checked } = e.target;
     this.setState({
-      [name]: checked
+      [name]: checked,
     });
   }
 
@@ -61,7 +60,7 @@ class Login extends Component {
               value={rememberMe}
               onChange={this.handleChecked}
             />
-            <input type="submit" />
+            <input type="submit" value={intl.formatMessage({ id: 'login.submit' })} />
           </fieldset>
         </form>
       </div>
