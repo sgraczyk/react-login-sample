@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import AuthActions from '../actions/auth';
 
 const Home = ({ user, onLogout }) => (
@@ -41,4 +41,4 @@ const mapDispatchToProps = dispatch => ({
   onLogout: () => dispatch(AuthActions.logout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Home));

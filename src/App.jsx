@@ -1,6 +1,6 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Home, Login, DevTools } from './containers';
@@ -20,8 +20,10 @@ const App = ({ store }) => (
       <ConnectedIntlProvider>
         <Router className="app-router">
           <Layout>
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/" component={Home} />
+            <Switch>
+              <Route path="/login" component={Login} />
+              <PrivateRoute path="/" component={Home} />
+            </Switch>
           </Layout>
         </Router>
       </ConnectedIntlProvider>
