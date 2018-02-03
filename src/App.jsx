@@ -1,11 +1,10 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Home, Login, DevTools } from './containers';
 import { Layout, PrivateRoute } from './components';
-import changeLocale from './actions/i18n';
 import './App.css';
 
 const mapStateToProps = state => ({
@@ -13,22 +12,17 @@ const mapStateToProps = state => ({
   messages: state.i18n.messages,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onLocaleChange: locale => dispatch(changeLocale(locale)),
-});
-
 const ConnectedIntlProvider = connect(mapStateToProps)(IntlProvider);
-const ConnectedLayout = withRouter(connect(state => state, mapDispatchToProps)(Layout));
 
 const App = ({ store }) => (
   <Provider store={store}>
     <div className="app-provider">
       <ConnectedIntlProvider>
         <Router className="app-router">
-          <ConnectedLayout>
+          <Layout>
             <Route path="/login" component={Login} />
             <PrivateRoute path="/" component={Home} />
-          </ConnectedLayout>
+          </Layout>
         </Router>
       </ConnectedIntlProvider>
       <DevTools />
