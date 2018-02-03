@@ -1,20 +1,5 @@
-import { createStore } from 'redux';
-import rootReducer from '../reducers';
-
-const configureStore = (preloadedState) => {
-  const store = createStore(
-    rootReducer,
-    preloadedState,
-  );
-
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      store.replaceReducer(rootReducer);
-    });
-  }
-
-  return store;
-};
-
-export default configureStore;
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./configure.prod'); // eslint-disable-line global-require
+} else {
+  module.exports = require('./configure.dev'); // eslint-disable-line global-require
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { injectIntl, intlShape } from 'react-intl';
-import { CheckBox, TextField } from '../components/Infrastructure';
+import { CheckBox, TextField } from '../components/infrastructure';
 
 class Login extends Component {
   state = {
