@@ -1,7 +1,33 @@
 import React from 'react';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { reduxForm, propTypes } from 'redux-form';
+import styled from 'styled-components';
 import { CheckBox, TextField } from '../infrastructure';
+
+const SubmitButton = styled.input`
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+`;
+
+const Fieldset = styled.fieldset`
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+`;
 
 const validate = (values) => {
   const errors = {};
@@ -30,7 +56,7 @@ const LoginForm = ({
   intl, error, handleSubmit, submitting,
 }) => (
   <form onSubmit={handleSubmit}>
-    <fieldset>
+    <Fieldset>
       <TextField
         id="login-email"
         name="email"
@@ -54,8 +80,8 @@ const LoginForm = ({
       <strong>
         <FormattedMessage id={error.id} />
       </strong>}
-      <input type="submit" disabled={submitting} value={intl.formatMessage({ id: 'login.submit' })} />
-    </fieldset>
+      <SubmitButton type="submit" disabled={submitting} value={intl.formatMessage({ id: 'login.submit' })} />
+    </Fieldset>
   </form>
 );
 

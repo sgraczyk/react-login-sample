@@ -16,6 +16,7 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-form": "^7.2.3",
     "redux-thunk": "^2.2.0",
+    "styled-components": "^3.1.6",
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
@@ -29,6 +30,7 @@
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
+    "babel-plugin-styled-components": "^1.5.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-airbnb": "^2.4.0",
     "babel-preset-react-app": "^3.1.1",
@@ -102,7 +104,8 @@
       "airbnb"
     ],
     "plugins": [
-      "transform-class-properties"
+      "transform-class-properties",
+      "babel-plugin-styled-components"
     ]
   },
   "eslintConfig": {

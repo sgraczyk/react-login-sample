@@ -13,7 +13,7 @@ const Layout = ({ children, onLocaleChange }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.element.isRequired,
   onLocaleChange: PropTypes.func.isRequired,
 };
 
