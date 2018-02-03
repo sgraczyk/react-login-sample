@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LocaleSwitch from './LocaleSwitch';
+import { LocaleSwitch } from './';
 import languages from '../constants/languages';
 
 const Header = ({ onLocaleChange }) => (

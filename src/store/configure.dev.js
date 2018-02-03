@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers';
 import { DevTools } from '../containers';
 
@@ -6,7 +7,10 @@ const configureStore = (preloadedState) => {
   const store = createStore(
     rootReducer,
     preloadedState,
-    DevTools.instrument(),
+    compose(
+      applyMiddleware(thunkMiddleware),
+      DevTools.instrument(),
+    ),
   );
 
   if (module.hot) {

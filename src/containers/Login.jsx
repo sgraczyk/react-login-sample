@@ -1,75 +1,30 @@
 import React, { Component } from 'react';
-import { injectIntl, intlShape } from 'react-intl';
-import { CheckBox, TextField } from '../components/infrastructure';
+import { FormattedMessage } from 'react-intl';
+import { SubmissionError } from 'redux-form';
+import AuthActions from '../actions/auth';
+import LoginForm from '../components/login/LoginForm';
 
 class Login extends Component {
-  state = {
-    email: '',
-    password: '',
-    rememberMe: false,
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    // set state
-    // dispatch action
-  }
-
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  handleChecked = (e) => {
-    const { name, checked } = e.target;
-    this.setState({
-      [name]: checked,
-    });
-  }
+  handleSubmit = (values, dispatch) =>
+    dispatch(AuthActions.login(values.email, values.password))
+      .then((credentialsValid) => {
+        if (!credentialsValid) {
+          throw new SubmissionError({
+            _error: {
+              id: 'login.invalidCredentials',
+            },
+          });
+        }
+      });
 
   render() {
-    const { intl } = this.props;
-    const { email, password, rememberMe } = this.state;
     return (
       <div className="login-container">
-        <h2>{intl.formatMessage({ id: 'login.header' })}</h2>
-        <form onSubmit={this.handleSubmit}>
-          <fieldset>
-            <TextField
-              id="login-email"
-              name="email"
-              type="email"
-              label={intl.formatMessage({ id: 'login.email' })}
-              value={email}
-              onChange={this.handleChange}
-            />
-            <TextField
-              id="login-password"
-              name="password"
-              type="password"
-              label={intl.formatMessage({ id: 'login.password' })}
-              value={password}
-              onChange={this.handleChange}
-            />
-            <CheckBox
-              id="login-remember"
-              name="rememberMe"
-              label={intl.formatMessage({ id: 'login.rememberMe' })}
-              value={rememberMe}
-              onChange={this.handleChecked}
-            />
-            <input type="submit" value={intl.formatMessage({ id: 'login.submit' })} />
-          </fieldset>
-        </form>
+        <h2><FormattedMessage id="login.header" /></h2>
+        <LoginForm onSubmit={this.handleSubmit} />
       </div>
     );
   }
 }
 
-Login.propTypes = {
-  intl: intlShape.isRequired,
-};
-
-export default injectIntl(Login);
+export default Login;

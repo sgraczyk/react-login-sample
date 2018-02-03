@@ -1,44 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Field, propTypes } from 'redux-form';
+import { FormattedMessage } from 'react-intl';
 import dasherize from '../../utils/dasherize';
 
-const TextField = ({
-  id,
-  name,
-  label,
-  type,
-  value,
-  onChange,
+const RenderField = ({
+  input, label, type, meta: { touched, error },
 }) => (
-  <div className={`${dasherize(name)}-text-field`}>
-    {label &&
-      <label htmlFor={name}>
-        {label}
-      </label>
-    }
-    <input
-      id={id}
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-    />
+  <div className={`${dasherize(input.name)}-text-field`}>
+    <label htmlFor={input.name}>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type} />
+      {touched && error &&
+      <span className="field-error">
+        <FormattedMessage id={error.id} />
+      </span>}
+    </div>
   </div>
+);
+
+RenderField.propTypes = {
+  ...propTypes.fieldPropTypes,
+};
+
+const TextField = props => (
+  <Field
+    {...props}
+    component={RenderField}
+  />
 );
 
 TextField.defaultProps = {
   type: 'text',
   label: null,
-  onChange: null,
 };
 
 TextField.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
   label: PropTypes.string,
   type: PropTypes.oneOf(['text', 'email', 'password']),
-  onChange: PropTypes.func,
 };
 
 export default TextField;

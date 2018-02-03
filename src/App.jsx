@@ -5,7 +5,7 @@ import { connect, Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Home, Login, DevTools } from './containers';
 import { Layout } from './components';
-import localeChange from './actions/i18n';
+import changeLocale from './actions/i18n';
 import './App.css';
 
 const mapStateToProps = state => ({
@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLocaleChange: locale => dispatch(localeChange(locale)),
+  onLocaleChange: locale => dispatch(changeLocale(locale)),
 });
 
 const ConnectedIntlProvider = connect(mapStateToProps)(IntlProvider);
