@@ -4,7 +4,7 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Home, Login, DevTools } from './containers';
-import { Layout, PrivateRoute } from './components';
+import { Layout, PrivateRoute } from './components/layout';
 
 const mapStateToProps = state => ({
   locale: state.i18n.locale,
@@ -17,7 +17,7 @@ const App = ({ store }) => (
   <Provider store={store}>
     <div className="app-provider">
       <ConnectedIntlProvider>
-        <Router className="app-router">
+        <Router>
           <Layout>
             <Switch>
               <Route path="/login" component={Login} />

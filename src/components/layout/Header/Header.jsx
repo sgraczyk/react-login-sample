@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LocaleSwitch } from './';
-import languages from '../constants/languages';
+import LocaleSelect from '../../features';
+import languages from '../../../constants/languages';
 
 const Header = ({ onLocaleChange, currentLocale }) => (
-  <header className="app-header">
-    <LocaleSwitch
+  <header>
+    <LocaleSelect
       languages={languages}
       onLocaleChange={onLocaleChange}
       value={currentLocale}

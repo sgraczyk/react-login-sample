@@ -3,8 +3,8 @@ import { SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import AuthActions from '../actions/auth';
-import LoginForm from '../components/login/LoginForm';
+import AuthActions from '../../actions/auth.actions';
+import LoginForm from './components/LoginForm';
 
 class Login extends Component {
   handleSubmit = (values, dispatch) =>
@@ -27,9 +27,7 @@ class Login extends Component {
     }
 
     return (
-      <div className="login-container">
-        <LoginForm onSubmit={this.handleSubmit} />
-      </div>
+      <LoginForm onSubmit={this.handleSubmit} />
     );
   }
 }
@@ -40,6 +38,7 @@ Login.propTypes = {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
+  ...state,
 });
 
 export default connect(mapStateToProps)(Login);

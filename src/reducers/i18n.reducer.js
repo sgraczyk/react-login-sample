@@ -8,10 +8,10 @@ const defaultLanguage = (navigator.languages && navigator.languages[0]) ||
 const langWithoutRegionCode = language => language.toLowerCase().split(/[_-]+/)[0];
 
 const initialState = {
-  locale: defaultLanguage,
+  locale: langWithoutRegionCode(defaultLanguage),
   messages: translations[defaultLanguage]
     || translations[langWithoutRegionCode(defaultLanguage)]
-    || translations.pl,
+    || translations.en,
 };
 
 export default function i18nReducer(state = initialState, action) {

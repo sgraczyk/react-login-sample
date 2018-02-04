@@ -1,65 +1,9 @@
 import React from 'react';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { reduxForm, propTypes } from 'redux-form';
-import styled from 'styled-components';
-import { CheckBox, TextField } from '../infrastructure';
-
-const Form = styled.form`
-  background-color: #FFFFFF;
-  padding: 2em;
-  padding-bottom: 3em;
-  border-radius: 8px;
-  max-width: 400px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 10px 40px -14px rgba(0,0,0,0.25);
-`;
-
-const H2 = styled.h2`
-  font-weight: 700;
-  color: #384047;
-  text-align: center;
-  line-height: 1.5em;
-  margin-bottom: 1.2em;
-  margin-top: 0.2em;
-`;
-
-const Fieldset = styled.fieldset`
-  border: 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const ErrorSpan = styled.span`
-  color: #FF0000;
-  margin-bottom: 0.3em;
-`;
-
-const SubmitButton = styled.input`
-  font-weight: 600;
-  text-align: center;
-  font-size: 19px;
-  color: #FFFFFF;
-  background-color: #4CAF50;
-  width: 100%;
-  border: none;
-  border-radius: 4px;
-  padding: 0.8em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 200ms ease-in-out;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
-  &:hover {
-    box-shadow: 0px 6px 10px rgba(0,0,0,0.3);
-    transform: translateY(-4px);
-  }
-`;
+import { Fieldset, Form, SubmitButton } from '../Login.styled';
+import { CheckBox, TextField } from '../../../components/form';
+import { H2, ValidationError } from '../../../components/styled';
 
 const validate = (values) => {
   const errors = {};
@@ -110,9 +54,9 @@ const LoginForm = ({
         onChange={() => {}}
       />
       {error &&
-      <ErrorSpan>
+      <ValidationError>
         <FormattedMessage id={error.id} />
-      </ErrorSpan>}
+      </ValidationError>}
       <SubmitButton type="submit" disabled={submitting} value={intl.formatMessage({ id: 'login.submit' })} />
     </Fieldset>
   </Form>

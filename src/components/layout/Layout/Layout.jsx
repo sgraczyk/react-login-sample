@@ -2,17 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import styled from 'styled-components';
-import { Header } from './';
-import changeLocale from '../actions/i18n';
-
-const FlexContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 6%;
-  margin: 0;
-`;
+import { Header } from '../';
+import { FlexContainer } from './Layout.styled';
+import I18nActions from '../../../actions/i18n.actions';
 
 const Layout = ({ children, currentLocale, onLocaleChange }) => (
   <div className="app-layout">
@@ -30,12 +22,12 @@ Layout.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  currentLocale: state.i18n.locale.toLowerCase().split(/[_-]+/)[0],
+  currentLocale: state.i18n.locale,
   ...state,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLocaleChange: locale => dispatch(changeLocale(locale)),
+  onLocaleChange: locale => dispatch(I18nActions.changeLocale(locale)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout));

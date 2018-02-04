@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
-import i18nReducer from './i18n';
-import authReducer from './auth';
+import i18nReducer from './i18n.reducer';
+import authReducer from './auth.reducer';
 
 const rootReducer = combineReducers({
   form: reduxFormReducer,
