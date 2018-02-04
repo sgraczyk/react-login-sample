@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -29,7 +28,6 @@ class Login extends Component {
 
     return (
       <div className="login-container">
-        <h2><FormattedMessage id="login.header" /></h2>
         <LoginForm onSubmit={this.handleSubmit} />
       </div>
     );

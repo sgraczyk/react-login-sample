@@ -5,31 +5,47 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import dasherize from '../../utils/dasherize';
 
-const Input = styled.input`
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
+const TextFieldContainer = styled.div`
   width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+`;
+
+const Label = styled.label`
+  padding: 0.3em 0 0.3em 0;
+`;
+
+const ErrorSpan = styled.span`
+  color: #FF0000;
+  margin-bottom: 0.3em;
+`;
+
+const Input = styled.input`
+  color: #384047;
+  background-color: #E8EEEF;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  border: none;
+  border-radius: 4px;
+  padding: 1em;
+  margin-bottom: 0.3em;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const RenderField = ({
   input, label, type, meta: { touched, error },
 }) => (
-  <div className={`${dasherize(input.name)}-text-field`}>
-    <label htmlFor={input.name}>{label}</label>
-    <div>
-      <Input {...input} placeholder={label} type={type} />
-      {touched && error &&
-      <span className="field-error">
+  <TextFieldContainer className={`${dasherize(input.name)}-text-field`}>
+    <Label htmlFor={input.name}>{label}</Label>
+    <Input {...input} placeholder={label} type={type} />
+    {touched && error &&
+      <ErrorSpan>
         <FormattedMessage id={error.id} />
-      </span>}
-    </div>
-  </div>
+      </ErrorSpan>
+    }
+  </TextFieldContainer>
 );
 
 RenderField.propTypes = {

@@ -5,7 +5,6 @@ import { connect, Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Home, Login, DevTools } from './containers';
 import { Layout, PrivateRoute } from './components';
-import './App.css';
 
 const mapStateToProps = state => ({
   locale: state.i18n.locale,

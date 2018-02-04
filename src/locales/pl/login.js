@@ -6,6 +6,6 @@ export default {
   'login.submit': 'Zaloguj',
   'login.required': 'Wymagane',
   'login.invalidEmail': 'Nierpawidłowy email',
-  'login.invalidPassword': 'Wymagana są przynajmniej jedna wielka litera, mała litera, cyfra o łącznej długości minimum 6 znaków',
+  'login.invalidPassword': 'Nieprawidłowe hasło',
   'login.invalidCredentials': 'Nieprawidłowy email lub hasło',
 };

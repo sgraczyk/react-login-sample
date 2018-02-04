@@ -4,29 +4,61 @@ import { reduxForm, propTypes } from 'redux-form';
 import styled from 'styled-components';
 import { CheckBox, TextField } from '../infrastructure';
 
-const SubmitButton = styled.input`
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #4CAF50;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  transition: all 0.3 ease;
-  cursor: pointer;
+const Form = styled.form`
+  background-color: #FFFFFF;
+  padding: 2em;
+  padding-bottom: 3em;
+  border-radius: 8px;
+  max-width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 10px 40px -14px rgba(0,0,0,0.25);
+`;
+
+const H2 = styled.h2`
+  font-weight: 700;
+  color: #384047;
+  text-align: center;
+  line-height: 1.5em;
+  margin-bottom: 1.2em;
+  margin-top: 0.2em;
 `;
 
 const Fieldset = styled.fieldset`
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const ErrorSpan = styled.span`
+  color: #FF0000;
+  margin-bottom: 0.3em;
+`;
+
+const SubmitButton = styled.input`
+  font-weight: 600;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  font-size: 19px;
+  color: #FFFFFF;
+  background-color: #4CAF50;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  padding: 0.8em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 200ms ease-in-out;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
+  &:hover {
+    box-shadow: 0px 6px 10px rgba(0,0,0,0.3);
+    transform: translateY(-4px);
+  }
 `;
 
 const validate = (values) => {
@@ -55,7 +87,8 @@ const validate = (values) => {
 const LoginForm = ({
   intl, error, handleSubmit, submitting,
 }) => (
-  <form onSubmit={handleSubmit}>
+  <Form onSubmit={handleSubmit}>
+    <H2><FormattedMessage id="login.header" /></H2>
     <Fieldset>
       <TextField
         id="login-email"
@@ -77,12 +110,12 @@ const LoginForm = ({
         onChange={() => {}}
       />
       {error &&
-      <strong>
+      <ErrorSpan>
         <FormattedMessage id={error.id} />
-      </strong>}
+      </ErrorSpan>}
       <SubmitButton type="submit" disabled={submitting} value={intl.formatMessage({ id: 'login.submit' })} />
     </Fieldset>
-  </form>
+  </Form>
 );
 
 LoginForm.propTypes = {
