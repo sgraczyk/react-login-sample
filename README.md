@@ -17,6 +17,10 @@ Project aims to bring more or less `real world` experience of working with `reac
 * `npm install` or `yarn`
 * `npm start` or `yarn start`
 
+## Tests
+
+* `npm run jest` or `yarn run jest`
+
 Authentication is faked. Hardcoded valid credentials are:
 * `test@test.pl`
 * `Password`
@@ -30,3 +34,4 @@ Project is still open for improvements. Here are some ideas:
   * Use a theme.
   * Use component props.
 * Store user data in `localStorage` to persist `isAuthenticated`.
+* Come up with a strategy for component testing as currently it's problematic due to `redux` and `redux-form`.

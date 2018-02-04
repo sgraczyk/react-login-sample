@@ -42,6 +42,9 @@ export const SubmitButton = styled.input`
     box-shadow: 0px 6px 10px rgba(0,0,0,0.3);
     transform: translateY(-4px);
   }
+  &:disabled {
+    background-color: ${StyledVariables.colors.dark};
+  }
 `;
 
 const LoginStyled = {

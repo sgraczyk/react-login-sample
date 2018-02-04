@@ -1,13 +1,14 @@
-import * as translations from '../locales';
-import * as ActionTypes from '../constants/action-types';
+import * as translations from '../../locales';
+import * as ActionTypes from '../../constants/action-types';
 
-const defaultLanguage = (navigator.languages && navigator.languages[0]) ||
-  navigator.language ||
-  navigator.userLanguage;
+const defaultLanguage = (navigator.languages && navigator.languages[0])
+  || (navigator.language)
+  || (navigator.userLanguage)
+  || 'en-US';
 
 const langWithoutRegionCode = language => language.toLowerCase().split(/[_-]+/)[0];
 
-const initialState = {
+export const initialState = {
   locale: langWithoutRegionCode(defaultLanguage),
   messages: translations[defaultLanguage]
     || translations[langWithoutRegionCode(defaultLanguage)]

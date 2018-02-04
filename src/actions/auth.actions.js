@@ -1,5 +1,5 @@
 import * as ActionTypes from '../constants/action-types';
-import AuthService from '../services/auth-service';
+import AuthService from '../services/auth.service';
 
 const request = () => ({
   type: ActionTypes.LOGIN_REQUEST,
