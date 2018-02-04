@@ -8,6 +8,8 @@ Example implementation of log in functionality using:
 
 It's based on `create-react-app`.
 
+![](docs/images/login.png?raw=true)
+
 ## Goals
 
 Project aims to bring more or less `real world` experience of working with `react` and `redux`. To do so it incorporates considered directory structure and file naming.
