@@ -25,7 +25,7 @@ Project aims to bring more or less `real world` experience of working with `reac
 
 Authentication is faked. Hardcoded valid credentials are:
 * `test@test.pl`
-* `Password`
+* `Password1`
 
 ## Further steps
 
