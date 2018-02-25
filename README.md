@@ -37,3 +37,4 @@ Project is still open for improvements. Here are some ideas:
   * Use component props.
 * Store user data in `localStorage` to persist `isAuthenticated`.
 * Come up with a strategy for component testing as currently it's problematic due to `redux` and `redux-form`.
+* Replace `redux-thunk` with `redux-saga`.
